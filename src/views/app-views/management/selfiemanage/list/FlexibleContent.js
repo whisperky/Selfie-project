@@ -4,17 +4,15 @@ import {
 	EllipsisOutlined,
 	SettingOutlined,
 } from "@ant-design/icons";
-import { Divider, Card, Avatar, Tag } from "antd";
+import { Space, Card, Avatar, Tag } from "antd";
 
 import AntImage from "components/util-components/AntImage";
 
 const { Meta } = Card;
 
 export class FlexibleContent extends Component {
-	state = {
-		status: "pending",
-	};
 	render() {
+		let { status } = this.props;
 		return (
 			<Card
 				hoverable
@@ -33,20 +31,20 @@ export class FlexibleContent extends Component {
 			>
 				<Meta
 					avatar={
-						<>
+						<Space direction="vertical" align="left">
 							<Avatar src="/img/avatars/artem.png" />
 							<Tag
 								color={
-									this.state.status === "active"
+									status === "active"
 										? "cyan"
-										: this.state.status === "rejected"
+										: status === "rejected"
 										? "red"
 										: "orange"
 								}
 							>
-								{this.state.status}
+								{status}
 							</Tag>
-						</>
+						</Space>
 					}
 					title="Face, half body"
 					description={<>Artem Panchina</>}

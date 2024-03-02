@@ -1,4 +1,3 @@
-import { useState, setState } from "react";
 import React, { Component } from "react";
 import ImageCard from "components/util-components/ImageCard";
 import FlexibleContent from "./FlexibleContent";
@@ -7,8 +6,8 @@ import Flex from "components/shared-components/Flex";
 import {
 	Avatar,
 	Divider,
-	Input,
-	Form,
+	Tag,
+	Space,
 	Button,
 	Image,
 	Modal,
@@ -24,16 +23,17 @@ const { Text } = Typography;
 export class CardComponent extends Component {
 	state = {
 		imgCol: 4,
-		lists: Array(16).fill(null),
+		lists: Array(16).fill("pending"),
 		viewStyle: 1, // 1: block view, 2: list view
 		isModalOpen: false,
+		selectedList: 0,
 	};
 
 	setImgCol = (col) => {
 		this.setState({ imgCol: col });
 	};
-	showModal = () => {
-		this.setState({ isModalOpen: true });
+	showModal = (i) => {
+		this.setState({ isModalOpen: true, selectedList: i });
 	};
 	handleOk = () => {
 		this.setState({ isModalOpen: false });
@@ -41,12 +41,14 @@ export class CardComponent extends Component {
 	handleCancel = () => {
 		this.setState({ isModalOpen: false });
 	};
-	approve = () => {
-		console.log("Approved");
+
+	handleStatusChange = (index, newStatus) => {
+		const updatedLists = [...this.state.lists];
+		updatedLists[index] = newStatus;
+		this.setState({ lists: updatedLists });
+		console.log(this.state.lists);
 	};
-	reject = () => {
-		console.log("Rejected");
-	};
+
 	render() {
 		return (
 			<>
@@ -68,9 +70,12 @@ export class CardComponent extends Component {
 						<Button onClick={() => this.setImgCol(4)}>6</Button>
 					</Flex>
 					<Row gutter={[16, 16]} justify="space-evenly">
-						{this.state.lists.map((_, i) => (
+						{this.state.lists.map((status, i) => (
 							<Col span={this.state.imgCol} key={i}>
-								<FlexibleContent showModal={this.showModal} />
+								<FlexibleContent
+									showModal={() => this.showModal(i)}
+									status={status}
+								/>
 							</Col>
 						))}
 					</Row>
@@ -105,25 +110,62 @@ export class CardComponent extends Component {
 									</p>
 								</Header>
 								<Content style={{ padding: "20px" }}>
-									<p style={{ fontSize: "28px", marginBottom: "0px" }}>
-										Description
-									</p>
-									<p
-										style={{
-											fontSize: "18px",
-											marginBottom: "0px",
-										}}
-									>
-										Stylish Fashion Wear for women
-									</p>
+									<Space direction="vertical">
+										<Typography
+											style={{ fontSize: "28px", marginBottom: "0px" }}
+										>
+											Description
+										</Typography>
+										<Typography
+											style={{
+												fontSize: "18px",
+												marginBottom: "0px",
+											}}
+										>
+											Stylish Fashion Wear for women
+										</Typography>
+										<Tag
+											color={
+												this.state.lists[this.state.selectedList] === "active"
+													? "cyan"
+													: this.state.lists[this.state.selectedList] ===
+													  "rejected"
+													? "red"
+													: "orange"
+											}
+										>
+											{this.state.lists[this.state.selectedList]}
+										</Tag>
+									</Space>
 									<Row gutter={10} style={{ marginTop: "20px" }}>
 										<Col>
-											<Button large type="primary" onClick={this.approve}>
+											<Button
+												large
+												type="primary"
+												onClick={() => {
+													this.handleStatusChange(
+														this.state.selectedList,
+														"active"
+													);
+													this.handleCancel();
+												}}
+											>
 												Approve
 											</Button>
 										</Col>
 										<Col>
-											<Button large type="primary" danger onClick={this.reject}>
+											<Button
+												large
+												type="primary"
+												danger
+												onClick={() => {
+													this.handleStatusChange(
+														this.state.selectedList,
+														"rejected"
+													);
+													this.handleCancel();
+												}}
+											>
 												Reject
 											</Button>
 										</Col>
