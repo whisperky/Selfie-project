@@ -74,7 +74,7 @@ export class UserList extends Component {
 				title: 'Status',
 				dataIndex: 'status',
 				render: status => (
-					<Tag className ="text-capitalize" color={status === 'active'? 'cyan' : 'red'}>{status}</Tag>
+					<Tag className ="text-capitalize" color={status === 'active'? 'cyan' : status === 'pending'? 'blue' : 'red'}>{status}</Tag>
 				),
 				sorter: {
 					compare: (a, b) => a.status.length - b.status.length,

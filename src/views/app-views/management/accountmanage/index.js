@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Table, Tag, Tooltip, message, Button } from 'antd';
-import { EyeOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EyeOutlined, DeleteOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import UserView from './UserView';
 import AvatarStatus from 'components/shared-components/AvatarStatus';
@@ -14,6 +14,16 @@ export class UserList extends Component {
 		selectedUser: null
 	}
 
+	handleStatus = (user, newStatus) => {
+		this.setState(prevState => ({
+			users: prevState.users.map(item => {
+				if (item.id === user.id) {
+					return { ...item, status: newStatus };
+				}
+				return item;
+			})
+		}));
+	}
 	deleteUser = userId => {
 		this.setState({
 			users: this.state.users.filter(item => item.id !== userId),
@@ -74,7 +84,7 @@ export class UserList extends Component {
 				title: 'Status',
 				dataIndex: 'status',
 				render: status => (
-					<Tag className ="text-capitalize" color={status === 'active'? 'cyan' : 'red'}>{status}</Tag>
+					<Tag className ="text-capitalize" color={status === 'active'? 'cyan' : status === 'pending' ? 'blue' : 'red'}>{status}</Tag>
 				),
 				sorter: {
 					compare: (a, b) => a.status.length - b.status.length,
@@ -85,6 +95,16 @@ export class UserList extends Component {
 				dataIndex: 'actions',
 				render: (_, elm) => (
 					<div className="text-right d-flex justify-content-end">
+						<Tooltip>
+							<Button className='mr-2' icon={<CheckOutlined/>} onClick={() => {
+								this.handleStatus(elm, "active");
+							}} />
+						</Tooltip>
+						<Tooltip>
+							<Button className='mr-2' icon={<CloseOutlined/>} onClick={() => {
+								this.handleStatus(elm, "blocked");
+							}} />
+						</Tooltip>
 						<Tooltip title="View">
 							<Button type="primary" className="mr-2" icon={<EyeOutlined />} onClick={() => {this.showUserProfile(elm)}} size="small"/>
 						</Tooltip>
