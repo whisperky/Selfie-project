@@ -6,7 +6,7 @@
     "img": "/img/avatars/thumb-1.jpg",
     "role": "Admin",
     "lastOnline": 1573430400,
-    "status": "active",
+    "status": "pending",
     "personalInfo": {
       "location": "New York, US",
       "title": "Product Manager",
@@ -25,7 +25,7 @@
     "img": "/img/avatars/thumb-2.jpg",
     "role": "User",
     "lastOnline": 1572393600,
-    "status": "active",
+    "status": "pending",
     "personalInfo": {
       "location": "New York, US",
       "title": "Software Engineer",
