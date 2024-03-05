@@ -13,6 +13,7 @@ const { Meta } = Card;
 export class FlexibleContent extends Component {
 	render() {
 		let { status } = this.props;
+
 		return (
 			<Card
 				hoverable
@@ -47,7 +48,7 @@ export class FlexibleContent extends Component {
 						</Space>
 					}
 					title="Face, half body"
-					description={<>Artem Panchina</>}
+					description={"Artem Panchina"}
 				/>
 			</Card>
 		);

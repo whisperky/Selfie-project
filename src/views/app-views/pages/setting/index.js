@@ -35,25 +35,33 @@ const SettingOption = () => {
 
 	const currentpath = locationPath[locationPath.length - 1];
 
+	console.log(locationPath);
+
 	return (
 		<Menu
 			mode="inline"
 			selectedKeys={[currentpath]}
 			items={[
 				{
-					key: "personal-info",
+					key: "edit-profile",
 					label: (
 						<MenuItem
 							label="Personal Info"
 							icon={<UserOutlined />}
-							path="personal-info"
+							path="edit-profile"
 						/>
 					),
 				},
-				// {
-				// 	key: 'change-password',
-				// 	label: <MenuItem label="Change Password" icon={<LockOutlined />} path="change-password" />
-				// },
+				{
+					key: "change-password",
+					label: (
+						<MenuItem
+							label="Change Password"
+							icon={<LockOutlined />}
+							path="change-password"
+						/>
+					),
+				},
 				{
 					key: "billing",
 					label: (
@@ -64,10 +72,16 @@ const SettingOption = () => {
 						/>
 					),
 				},
-				// {
-				// 	key: 'notification',
-				// 	label: <MenuItem label="Notification" icon={<BellOutlined />} path="notification" />
-				// },
+				{
+					key: "notification",
+					label: (
+						<MenuItem
+							label="Notification"
+							icon={<BellOutlined />}
+							path="notification"
+						/>
+					),
+				},
 				{
 					key: "selfies",
 					label: (
@@ -75,36 +89,6 @@ const SettingOption = () => {
 							label="Selfies"
 							icon={<PictureOutlined />}
 							path="selfies"
-						/>
-					),
-				},
-				{
-					key: "payment-information",
-					label: (
-						<MenuItem
-							label="Payment Information"
-							icon={<CreditCardOutlined />}
-							path="payment-information"
-						/>
-					),
-				},
-				{
-					key: "ID-information",
-					label: (
-						<MenuItem
-							label="ID Information"
-							icon={<IdcardOutlined />}
-							path="ID-information"
-						/>
-					),
-				},
-				{
-					key: "legal-information",
-					label: (
-						<MenuItem
-							label="Legal Information"
-							icon={<SafetyOutlined />}
-							path="legal-information"
 						/>
 					),
 				},
@@ -116,13 +100,11 @@ const SettingOption = () => {
 const SettingContent = () => {
 	return (
 		<Routes>
-			<Route path="personal-info" element={<EditProfile />} />
+			<Route path="edit-profile" element={<EditProfile />} />
 			<Route path="change-password" element={<ChangePassword />} />
 			<Route path="billing" element={<Billing />} />
 			<Route path="notification" element={<Notification />} />
-			<Route path="payment-information" element={<Billing />} />
-			<Route path="notification" element={<Notification />} />
-			<Route path="*" element={<Navigate to="personal-info" replace />} />
+			<Route path="*" element={<Navigate to="edit-profile" replace />} />
 		</Routes>
 	);
 };

@@ -1,148 +1,157 @@
 export const VisitorChartData = {
-  	series: [
+	series: [
 		{
 			name: "Session Duration",
-			data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+			data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10],
 		},
 		{
 			name: "Page Views",
-			data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-		}
+			data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
+		},
 	],
-	categories:[
-		'01 Jan', 
-		'02 Jan', 
-		'03 Jan', 
-		'04 Jan', 
-		'05 Jan', 
-		'06 Jan', 
-		'07 Jan', 
-		'08 Jan', 
-		'09 Jan',
-		'10 Jan', 
-		'11 Jan', 
-		'12 Jan'
-	]
-}
+	categories: [
+		"01 Jan",
+		"02 Jan",
+		"03 Jan",
+		"04 Jan",
+		"05 Jan",
+		"06 Jan",
+		"07 Jan",
+		"08 Jan",
+		"09 Jan",
+		"10 Jan",
+		"11 Jan",
+		"12 Jan",
+	],
+};
 
 export const AnnualStatisticData = [
 	{
-		title: 'Total Users',
-		value: '14,256', 
+		title: "Total Users",
+		value: "14,256",
 		status: 11.4,
-		subtitle: `Compare to last year (2023)`
+		subtitle: `Compare to last year (2023)`,
 	},
 	{
-		title: 'Total Selfies',
-		value:'643,982', 
+		title: "Total Selfies",
+		value: "643,982",
 		status: 8.2,
-		subtitle: `Compare to last year (2023)`
+		subtitle: `Compare to last year (2023)`,
 	},
 	{
-		title: 'Total Referrals',
-		value:'18,310', 
+		title: "Total Referrals",
+		value: "18,310",
 		status: -0.7,
-		subtitle: `Compare to last year (2023)`
+		subtitle: `Compare to last year (2023)`,
 	},
 	{
-		title: 'Total Revenue',
-		value:'€54,236', 
+		title: "Total Revenue",
+		value: "€54,236",
 		status: 0.3,
-		subtitle: `Compare to last year (2023)`
-	}
-]
+		subtitle: `Compare to last year (2023)`,
+	},
+];
 
 export const CurrentRevenueStatisticData = [
 	{
-		title: 'Pending Payments',
-		value: '15 (€34.5)',
+		title: "Pending Payments",
+		value: "15 (€34.5)",
 		status: 6,
-		subtitle: `Compare to last day`
+		subtitle: `Compare to last day`,
 	},
 	{
-		title: 'Pending Selfies',
-		value:'156', 
+		title: "Pending Selfies",
+		value: "156",
 		status: -97,
-		subtitle: `Compare to last day`
+		subtitle: `Compare to last day`,
 	},
 	{
-		title: 'Pending Identify',
-		value:'135', 
+		title: "Pending Identify",
+		value: "135",
 		status: 56,
-		subtitle: `Compare to last day`
-	}
-]
+		subtitle: `Compare to last day`,
+	},
+];
 
-export const ActiveMembersData = [{
-	name: 'Members',
-	data: [25, 15, 41, 25, 44, 12, 36, 19, 54]
-}]
+export const ActiveMembersData = [
+	{
+		name: "Members",
+		data: [25, 15, 41, 25, 44, 12, 36, 19, 54],
+	},
+];
 
-export const NewMembersData = [{
-	img: "/img/avatars/thumb-2.jpg",
-	title: "Software Engineer",
-	name: "Terrance Moreno",
-},
-{
-	img: "/img/avatars/thumb-3.jpg",
-	title: "UI/UX Designer",
-	name: "Ron Vargas",
-},
-{
-	img: "/img/avatars/thumb-4.jpg",
-	title: "HR Executive",
-	name: "Luke Cook",
-},
-{
-	img: "/img/avatars/thumb-5.jpg",
-	title: "Frontend Developer",
-	name: "Joyce Freeman",
-},
-{
-	img: "/img/avatars/thumb-6.jpg",
-	title: "Compliance Manager",
-	name: "Samantha Phillips",
-}]
+export const NewMembersData = [
+	{
+		img: "/img/avatars/thumb-2.jpg",
+		title: "Software Engineer",
+		name: "Terrance Moreno",
+	},
+	{
+		img: "/img/avatars/thumb-3.jpg",
+		title: "UI/UX Designer",
+		name: "Ron Vargas",
+	},
+	{
+		img: "/img/avatars/thumb-4.jpg",
+		title: "HR Executive",
+		name: "Luke Cook",
+	},
+	{
+		img: "/img/avatars/thumb-5.jpg",
+		title: "Frontend Developer",
+		name: "Joyce Freeman",
+	},
+	{
+		img: "/img/avatars/thumb-6.jpg",
+		title: "Compliance Manager",
+		name: "Samantha Phillips",
+	},
+];
 
 export const RecentTransactionData = [
 	{
-		id: '#5331',
-		name: 'Clayton Bates',
-		date: '8 May 2020',
-		amount: '$137.00',
-		status: 'Approved',
-		avatarColor: '#04d182'
+		id: "#5331",
+		name: "Clayton Bates",
+		userId: "eileenHorton-1153",
+		date: "8 May 2020",
+		amount: "$137.00",
+		status: "Approved",
+		avatarColor: "#04d182",
 	},
 	{
-		id: '#5332',
-		name: 'Gabriel Frazier',
-		date: '6 May 2020',
-		amount: '$322.00',
-		status: 'Approved',
-		avatarColor: '#fa8c16'
+		id: "#5332",
+		name: "Gabriel Frazier",
+		userId: "eileenHorton-1153",
+		date: "6 May 2020",
+		amount: "$322.00",
+		status: "Approved",
+		avatarColor: "#fa8c16",
 	},
 	{
-		id: '#5333',
-		name: 'Debra Hamilton',
-		date: '1 May 2020',
-		amount: '$543.00',
-		status: 'Pending',
-		avatarColor: '#1890ff'
+		id: "#5333",
+		name: "Eileen Horton",
+		userId: "eileenHorton-1153",
+		date: "1 May 2020",
+		amount: "$543.00",
+		status: "Pending",
+		avatarColor: "#1890ff",
 	},
 	{
-		id: '#5334',
-		name: 'Stacey Ward',
-		date: '28 April 2020',
-		amount: '$876.00',
-		status: 'Rejected',
-		avatarColor: '#ffc542'
+		id: "#5334",
+		name: "Stacey Ward",
+		userId: "eileenHorton-1153",
+		date: "28 April 2020",
+		amount: "$876.00",
+		status: "Rejected",
+		avatarColor: "#ffc542",
 	},
 	{
-		id: '#5335',
-		name: 'Troy Alexander',
-		date: '28 April 2020',
-		amount: '$241.00',
-		status: 'Approved',
-		avatarColor: '#ff6b72'
+		id: "#5335",
+		name: "Troy Alexander",
+		userId: "eileenHorton-1153",
+		date: "28 April 2020",
+		amount: "$241.00",
+		status: "Approved",
+		avatarColor: "#ff6b72",
 	},
 ];

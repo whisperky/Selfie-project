@@ -11,7 +11,7 @@ import {
 
 import { Image, Space } from "antd";
 const src = "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png";
-const App = () => {
+const App = (props) => {
 	const onDownload = () => {
 		fetch(src)
 			.then((response) => response.blob())
@@ -55,6 +55,7 @@ const App = () => {
 					</Space>
 				),
 			}}
+			width={props.width}
 		/>
 	);
 };
