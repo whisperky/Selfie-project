@@ -4,8 +4,6 @@ import FlexibleContent from "./FlexibleContent";
 import { AppstoreOutlined, BarsOutlined } from "@ant-design/icons";
 import Flex from "components/shared-components/Flex";
 import {
-	Avatar,
-	Divider,
 	Tag,
 	Space,
 	Button,
@@ -15,7 +13,11 @@ import {
 	Typography,
 	Row,
 	Col,
+	List,
+	Avatar,
 } from "antd";
+
+import AntImage from "components/util-components/AntImage";
 
 const { Header, Footer, Sider, Content } = Layout;
 const { Text } = Typography;
@@ -69,16 +71,56 @@ export class CardComponent extends Component {
 						<Button onClick={() => this.setImgCol(6)}>4</Button>
 						<Button onClick={() => this.setImgCol(4)}>6</Button>
 					</Flex>
-					<Row gutter={[16, 16]} justify="space-evenly">
-						{this.state.lists.map((status, i) => (
-							<Col span={this.state.imgCol} key={i}>
-								<FlexibleContent
-									showModal={() => this.showModal(i)}
-									status={status}
-								/>
-							</Col>
-						))}
-					</Row>
+					{this.state.viewStyle === 1 ? (
+						<Row gutter={[16, 16]} justify="space-evenly">
+							{this.state.lists.map((status, i) => (
+								<Col span={this.state.imgCol} key={i}>
+									<FlexibleContent
+										showModal={() => this.showModal(i)}
+										status={status}
+									/>
+								</Col>
+							))}
+						</Row>
+					) : (
+						<List
+							itemLayout="horizontal"
+							dataSource={this.state.lists}
+							renderItem={(status, i) => (
+								<List.Item
+									actions={[
+										<Button type="link" onClick={() => this.showModal(i)}>
+											View Details
+										</Button>,
+									]}
+								>
+									<AntImage
+										alt="example"
+										src="https://gw.alipayobjects.com/zos/antfincdn/LlvErxo8H9/photo-1503185912284-5271ff81b9a8.webp"
+										width="160px"
+									/>
+									<List.Item.Meta
+										avatar={<Avatar src="/img/avatars/artem.png" />}
+										title={<a href="javascript:void(0);">Face, half body</a>}
+										description="Artem Panchina"
+										style={{ marginBottom: "10px", marginLeft: "20px" }}
+									/>
+
+									<Tag
+										color={
+											status === "active"
+												? "cyan"
+												: status === "rejected"
+												? "red"
+												: "orange"
+										}
+									>
+										{status}
+									</Tag>
+								</List.Item>
+							)}
+						/>
+					)}
 					<Modal
 						open={this.state.isModalOpen}
 						onOk={this.handleOk}

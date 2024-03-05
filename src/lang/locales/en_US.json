@@ -1,6 +1,6 @@
 {
 	"home": "Home",
-	
+
 	"sidenav.dashboard": "Dashboard",
 	"sidenav.dashboard.default": "Main",
 	"sidenav.dashboard.analytic": "Analytic",
@@ -20,7 +20,6 @@
 	"sidenav.apps.ecommerce.productList": "Product List",
 	"sidenav.apps.ecommerce.orders": "Orders",
 
-	
 	"sidenav.management": "Management",
 	"sidenav.management.userManagement": "User Management",
 	"sidenav.management.accountManagement": "Account Management",
@@ -29,9 +28,10 @@
 	"sidenav.management.selfieManagement": "Selfie Management",
 	"sidenav.management.selfieManagement.lists": "List",
 	"sidenav.management.selfieManagement.actions": "Actions",
-	
+
 	"sidenav.management.paymentManagement": "Payment management",
 	"sidenav.management.paymentManagement.transactions": "Transactions",
+	"sidenav.management.paymentManagement.requests": "Payment Requests",
 	"sidenav.management.paymentManagement.actions": "Payment Actions",
 
 	"sidenav.management.verificationManagement": "Verification Management",
@@ -112,13 +112,13 @@
 	"sidenav.components.feedback.result": "Result",
 	"sidenav.components.feedback.spin": "Spin",
 	"sidenav.components.feedback.skeleton": "Skeleton",
-	
+
 	"sidenav.components.other": "Other",
 	"sidenav.components.other.anchor": "Anchor",
 	"sidenav.components.other.backtop": "BackTop",
 	"sidenav.components.other.configProvider": "Config Provider",
 	"sidenav.components.other.divider": "Divider",
-	
+
 	"sidenav.charts": "Charts",
 	"sidenav.charts.apex": "Apex Charts",
 	"sidenav.charts.chartjs": "ChartJs",
@@ -126,7 +126,7 @@
 	"sidenav.maps": "Maps",
 	"sidenav.maps.google": "Google Maps",
 	"sidenav.maps.simple": "Simple Maps",
-	
+
 	"sidenav.pages": "Pages",
 	"sidenav.pages.profile": "Profile",
 	"sidenav.pages.invoice": "Invoice",
