@@ -180,6 +180,13 @@ export const protectedRoutes = [
 		),
 	},
 	{
+		key: "management.verificationManagement.personalInfo",
+		path: `${APP_PREFIX_PATH}/management/verification/personalInfo`,
+		component: React.lazy(() =>
+			import("views/app-views/management/verificationmanage/personalInfo")
+		),
+	},
+	{
 		key: "components.general",
 		path: `${APP_PREFIX_PATH}/components/general`,
 		component: React.lazy(() => import("views/app-views/components/general")),
