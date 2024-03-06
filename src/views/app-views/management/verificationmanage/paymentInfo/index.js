@@ -28,7 +28,6 @@ import {
   CalendarOutlined,
 } from "@ant-design/icons";
 import dayjs from "dayjs";
-import UserView from "./UserView";
 import AvatarStatus from "components/shared-components/AvatarStatus";
 import userData from "assets/data/user-list.data.json";
 
@@ -36,7 +35,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const { TextArea } = Input;
 
-export class PersonalInfo extends Component {
+export class PaymentInfo extends Component {
   state = {
     users: userData,
     userProfileVisible: false,
@@ -164,13 +163,6 @@ export class PersonalInfo extends Component {
         },
       },
       {
-        title: "Role",
-        dataIndex: "role",
-        sorter: {
-          compare: (a, b) => a.role.length - b.role.length,
-        },
-      },
-      {
         title: "Last online",
         dataIndex: "lastOnline",
         render: (date) => <span>{dayjs.unix(date).format("MM/DD/YYYY")} </span>,
@@ -283,7 +275,7 @@ export class PersonalInfo extends Component {
           <Layout>
             <Header style={{ padding: "0 20px" }}>
               <p style={{ fontSize: "28px", marginBottom: "0px" }}>
-                User Information
+                Payment Information
               </p>
             </Header>
             <Content
@@ -293,7 +285,7 @@ export class PersonalInfo extends Component {
               }}
             >
               <Typography style={{ marginBottom: "10px" }}>
-                <UserOutlined style={{ padding: "0 10px" }} />
+                <Image src="/img/others/img-8.png" alt="visa" />
                 <Typography.Text style={{ fontSize: "18px" }}>
                   Name: {this.state.selectedUser?.name}
                 </Typography.Text>
@@ -336,4 +328,4 @@ export class PersonalInfo extends Component {
   }
 }
 
-export default PersonalInfo;
+export default PaymentInfo;
