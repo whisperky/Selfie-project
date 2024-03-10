@@ -1,10 +1,12 @@
-import React, { Component } from "react";
-import { Card, Table, Tag, Tooltip, message, Button } from "antd";
+import React, { useRef, Component } from "react";
+import Highlighter from "react-highlight-words";
+import { Card, Table, Tag, Tooltip, message, Button, Input, Space } from "antd";
 import {
 	EyeOutlined,
 	DeleteOutlined,
 	CheckOutlined,
 	CloseOutlined,
+	SearchOutlined,
 } from "@ant-design/icons";
 import dayjs from "dayjs";
 import UserView from "./UserView";
@@ -16,6 +18,9 @@ export class UserList extends Component {
 		users: userData,
 		userProfileVisible: false,
 		selectedUser: null,
+		searchText: "",
+		searchedColumn: "",
+		searchInput: React.createRef(),
 	};
 
 	handleStatus = (user, newStatus) => {
@@ -28,7 +33,7 @@ export class UserList extends Component {
 			}),
 		}));
 	};
-	
+
 	deleteUser = (userId) => {
 		this.setState({
 			users: this.state.users.filter((item) => item.id !== userId),
@@ -49,6 +54,84 @@ export class UserList extends Component {
 			selectedUser: null,
 		});
 	};
+
+	onSearch = (value, _e, info) => {
+		console.log(info?.source, value);
+	};
+
+	handleSearch = (selectedKeys, confirm, dataIndex) => {
+		confirm();
+		this.setState({ searchText: selectedKeys[0] });
+		this.setState({ setSearchedColumn: dataIndex });
+	};
+
+	handleReset = (clearFilters) => {
+		clearFilters();
+		this.setState({ searchText: "" });
+	};
+	getColumnSearchProps = (dataIndex) => ({
+		filterDropdown: ({
+			setSelectedKeys,
+			selectedKeys,
+			confirm,
+			clearFilters,
+			close,
+		}) => (
+			<div style={{ padding: 8 }} onKeyDown={(e) => e.stopPropagation()}>
+				<Input
+					ref={this.state.searchInput}
+					placeholder={`Search ${dataIndex}`}
+					value={selectedKeys[0]}
+					onChange={(e) =>
+						setSelectedKeys(e.target.value ? [e.target.value] : [])
+					}
+					onPressEnter={() =>
+						this.handleSearch(selectedKeys, confirm, dataIndex)
+					}
+					style={{ marginBottom: 8, display: "block" }}
+				/>
+				<Space>
+					<Button
+						type="primary"
+						onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+						icon={<SearchOutlined />}
+						size="small"
+						style={{ width: 90 }}
+					>
+						Search
+					</Button>
+					<Button
+						onClick={() => clearFilters && this.handleReset(clearFilters)}
+						size="small"
+						style={{ width: 90 }}
+					>
+						Reset
+					</Button>
+				</Space>
+			</div>
+		),
+		filterIcon: (filtered) => (
+			<SearchOutlined style={{ color: filtered ? "#1677ff" : undefined }} />
+		),
+		onFilter: (value, record) =>
+			record[dataIndex].toString().toLowerCase().includes(value.toLowerCase()),
+		onFilterDropdownOpenChange: (visible) => {
+			if (visible) {
+				setTimeout(() => this.searchInput.current?.select(), 100);
+			}
+		},
+		render: (text) =>
+			this.state.searchedColumn === dataIndex ? (
+				<Highlighter
+					highlightStyle={{ backgroundColor: "#ffc069", padding: 0 }}
+					searchWords={[this.state.searchText]}
+					autoEscape
+					textToHighlight={text ? text.toString() : ""}
+				/>
+			) : (
+				text
+			),
+	});
 
 	render() {
 		const { users, userProfileVisible, selectedUser } = this.state;
@@ -73,6 +156,7 @@ export class UserList extends Component {
 						return a > b ? -1 : b > a ? 1 : 0;
 					},
 				},
+				...this.getColumnSearchProps("name"),
 			},
 			{
 				title: "Role",
@@ -80,6 +164,7 @@ export class UserList extends Component {
 				sorter: {
 					compare: (a, b) => a.role.length - b.role.length,
 				},
+				...this.getColumnSearchProps("role"),
 			},
 			{
 				title: "Last online",
