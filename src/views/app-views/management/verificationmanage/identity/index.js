@@ -35,7 +35,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const { TextArea } = Input;
 
-export class PaymentInfo extends Component {
+export class Identity extends Component {
 	state = {
 		users: userData,
 		userProfileVisible: false,
@@ -275,7 +275,7 @@ export class PaymentInfo extends Component {
 					<Layout>
 						<Header style={{ padding: "0 20px" }}>
 							<p style={{ fontSize: "28px", marginBottom: "0px" }}>
-								Payment Information
+								Identity Information
 							</p>
 						</Header>
 						<Content
@@ -285,20 +285,7 @@ export class PaymentInfo extends Component {
 							}}
 						>
 							<Typography style={{ marginBottom: "10px" }}>
-								<Image src="/img/others/img-8.png" alt="visa" />
-								<Typography.Text
-									style={{ fontSize: "18px", paddingLeft: "20px" }}
-								>
-									{this.state.selectedUser?.lastOnline}
-								</Typography.Text>
-							</Typography>
-							<Typography style={{ marginBottom: "10px" }}>
-								<Image src="/img/others/img-9.png" alt="cepa" />
-								<Typography.Text
-									style={{ fontSize: "18px", paddingLeft: "20px" }}
-								>
-									{this.state.selectedUser?.lastOnline}
-								</Typography.Text>
+								<Image src="/img/others/img-22.png" />
 							</Typography>
 							<Typography style={{ margin: "20px" }}>
 								<Radio.Group
@@ -326,4 +313,4 @@ export class PaymentInfo extends Component {
 	}
 }
 
-export default PaymentInfo;
+export default Identity;
