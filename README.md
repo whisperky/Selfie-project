@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <img src="https://github.com/whisperky/selfie-project/public/img/homeimage.png" />
+  <img src="https://github.com/whisperky/Selfie-project/public/img/homeimage.png" />
 </p>
 
 <br></br>
