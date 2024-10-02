@@ -16,7 +16,6 @@
     This is Selfie Site where women are able to upload their selfies and earn money according to its evaluation.
 </p>
 </div>
-<br></br>
 
 ## Available Scripts
 
